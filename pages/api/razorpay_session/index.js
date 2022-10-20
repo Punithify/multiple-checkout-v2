@@ -3,11 +3,11 @@ const Razorpay=require("razorpay")
 const { v4: uuidv4 } = require("uuid");
 
 const instance = new Razorpay({
-  key_id: "rzp_test_jbzjfbGd3TBj4tY",
-  key_secret: "rD4swQl6G1HZUJFmUkgV4ImD",
+  key_id: "rzp_test_y3CxNF2TYTvNTZ",
+  key_secret: "oC10vEeCVMWVH4DuALY980t5",
 });
 
-  export async function handler(params, request) {
+export default async function handler(req, res) {
 
     const payment_capture = 1;
     const options = {
@@ -19,12 +19,10 @@ const instance = new Razorpay({
     };
     try {
       const response = await instance.orders.create(options);
-      return new Response(JSON.stringify({ id: response.id,
+     console.log(response)
+      res.json({ id: response.id,
         currency: response.currency,
-        amount: response.amount,}), {
-        status: 200,
-       
-      })
+        amount: response.amount,})
     } catch (error) {
       console.log(error);
     }

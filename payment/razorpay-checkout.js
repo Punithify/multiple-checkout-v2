@@ -2,11 +2,11 @@
 
 
 export const displayRazorpay=async ()=>{
-    const res=await fetch("/api/payment");
+    const res=await fetch("/api/razorpay_session");
     const order=await res.json()
     console.log(order)
     const options = {
-      key: "rzp_test_EKng3Z8Z0zJL84",
+      key: "rzp_test_y3CxNF2TYTvNTZ",
       amount: 400000,
       currency: order.currency,
       name: "St Joseph's College",
