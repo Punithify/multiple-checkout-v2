@@ -51,7 +51,6 @@ export default function Home({country}) {
 
     </Container>
     <Container >
-      <form>
       <Text h4>Payment</Text>
   <Text h5>All transactions are secure and encrypted.</Text>
   <Radio.Group orientation="vertical"
@@ -73,14 +72,14 @@ export default function Home({country}) {
       </Radio>
      
     </Radio.Group>
-    <Button
+   
+      <Button
+    css={{"width":"50%","marginTop":"10px"}}
     onPress={loadPayment}
     color="primary" auto ghost>
 
           Pay
         </Button>
-      </form>
-   
    
     </Container>
     
