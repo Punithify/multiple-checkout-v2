@@ -1,19 +1,15 @@
-import {Container,Text ,Radio,Button,Spacer} from '@nextui-org/react'
+import {Container,Text ,Radio,Button} from '@nextui-org/react'
 import {useState,useEffect} from "react"
-
+import stripeCheckout from '../payment/stripe-checkout';
 
 export default function Home({country}) {
  
   const [disabled,setDisabled]=useState({razorpay:true,stripe:false})
-  
-  
   country = decodeURIComponent(country);
   
 
-  console.log(disabled)
-
-  const loadStripe=()=>{
-    console.log("stripe")
+  const loadStripe= ()=>{
+    stripeCheckout()
   }
 
   const loadRazorpay=()=>{
@@ -25,12 +21,12 @@ export default function Home({country}) {
     return disabled.razorpay?loadStripe():loadRazorpay()
   }
 
-  useEffect(() => {
-    if (country === "IN") {
-      setDisabled({razorpay:false,stripe:true});
-      return;
-    } 
-  }, [country]);
+  // useEffect(() => {
+  //   if (country === "IN") {
+  //     setDisabled({razorpay:false,stripe:true});
+  //     return;
+  //   } 
+  // }, [country]);
 
 
 
