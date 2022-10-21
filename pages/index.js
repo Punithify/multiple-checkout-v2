@@ -1,4 +1,4 @@
-import {Container,Text ,Radio,Button} from '@nextui-org/react'
+import {Container,Text ,Radio,Button,Loading} from '@nextui-org/react'
 import {useState,useEffect} from "react"
 import stripeCheckout from '../payment/stripe-checkout';
 import { displayRazorpay } from '../payment/razorpay-checkout';
@@ -7,7 +7,7 @@ export default function Home({country}) {
  
   const [disabled,setDisabled]=useState({razorpay:true,stripe:false})
   const [scriptLoaded, setScriptLoaded] = useState(false);
- 
+  const [buttonDisabled,setButtonDisabled]=useState(false)
  
   country = decodeURIComponent(country);
     const loadRazorpayCheckout = () => {
@@ -24,14 +24,17 @@ export default function Home({country}) {
 
   const loadStripe= ()=>{
     stripeCheckout()
+    
   }
 
-  const loadRazorpay=()=>{
-    displayRazorpay()
+  const loadRazorpay=async()=>{
+    const res=await displayRazorpay()
+    setButtonDisabled(res)
   }
 
 
   const loadPayment=()=>{
+    setButtonDisabled(true)
     return disabled.razorpay?loadStripe():loadRazorpay()
   }
 
@@ -70,7 +73,7 @@ export default function Home({country}) {
   <Text h5>All transactions are secure and encrypted.</Text>
   <Radio.Group orientation="vertical"
    label="payment"
-   defaultValue={disabled.stripe?"razorpay" :"stripe"}
+   defaultValue={country === "IN"?"razorpay" :"stripe"}
   >
       <Radio 
       value="razorpay"
@@ -89,11 +92,11 @@ export default function Home({country}) {
     </Radio.Group>
    
       <Button
+      disabled={buttonDisabled}
     css={{"width":"100%","marginTop":"10px"}}
     onPress={loadPayment}
     color="primary" auto ghost>
-
-          Pay
+        {buttonDisabled?( <Loading  color="primary" size="md" />):"Pay"}
         </Button>
    
     </Container>

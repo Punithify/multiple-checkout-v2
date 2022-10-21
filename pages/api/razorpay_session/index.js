@@ -3,8 +3,8 @@ const Razorpay=require("razorpay")
 const { v4: uuidv4 } = require("uuid");
 
 const instance = new Razorpay({
-  key_id: "rzp_test_y3CxNF2TYTvNTZ",
-  key_secret: "oC10vEeCVMWVH4DuALY980t5",
+  key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY,
+  key_secret: process.env.RAZORPAY_SECRET,
 });
 
 export default async function handler(req, res) {
