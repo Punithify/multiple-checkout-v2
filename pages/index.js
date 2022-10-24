@@ -84,8 +84,8 @@ export default function Home({country}) {
   >
       <Radio 
       justify="center"
-    
-      
+
+      value="razorpay"
       isDisabled={disabled.razorpay}
        >
       Netbanking/UPI (Processed via Razorpay)
