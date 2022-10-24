@@ -13,15 +13,14 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <html lang='en'>
+      <Html lang='en'>
         <Head>{CssBaseline.flush()}
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
