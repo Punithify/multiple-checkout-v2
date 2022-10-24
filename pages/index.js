@@ -1,4 +1,4 @@
-import {Container,Text ,Radio,Button,Loading} from '@nextui-org/react'
+import {Container,Text ,Radio,Button,Loading,Grid,Image} from '@nextui-org/react'
 import {useState,useEffect} from "react"
 import stripeCheckout from '../payment/stripe-checkout';
 import { displayRazorpay } from '../payment/razorpay-checkout';
@@ -24,12 +24,11 @@ export default function Home({country}) {
 
   const loadStripe= ()=>{
     stripeCheckout()
-    
   }
 
   const loadRazorpay=async()=>{
     const res=await displayRazorpay()
-    setButtonDisabled(res)
+    setButtonDisabled(res) //for the razorpay cancel button
   }
 
 
@@ -68,19 +67,29 @@ export default function Home({country}) {
   </Text>
 
     </Container>
-    <Container >
+    <Grid.Container 
+     justify="center"
+     alignItems='center'
+     css={{"marginTop":"$14"}}
+    >
+      <Grid
+   
+      >
       <Text h4>Payment</Text>
-  <Text h5>All transactions are secure and encrypted.</Text>
+  <Text h3>All transactions are secure and encrypted.</Text>
   <Radio.Group orientation="vertical"
-   label="payment"
+  aria-label='payments'
    defaultValue={country === "IN"?"razorpay" :"stripe"}
+   css={{"marginTop":"$10"}}
   >
       <Radio 
-      value="razorpay"
+      justify="center"
+    
       
       isDisabled={disabled.razorpay}
        >
       Netbanking/UPI (Processed via Razorpay)
+      
       </Radio>
       <Radio
       
@@ -90,16 +99,15 @@ export default function Home({country}) {
       </Radio>
      
     </Radio.Group>
-   
-      <Button
+    <Button
       disabled={buttonDisabled}
-    css={{"width":"100%","marginTop":"10px"}}
+    css={{"width":"100%","marginTop":"$8"}}
     onPress={loadPayment}
     color="primary" auto ghost>
         {buttonDisabled?( <Loading  color="primary" size="md" />):"Pay"}
         </Button>
-   
-    </Container>
+      </Grid>
+    </Grid.Container>
     
   </>
 
@@ -111,3 +119,8 @@ export async function getServerSideProps({ query }) {
     props: query,
   };
 }
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="163" height="80.9" class="mx-auto" viewBox="-252.3 356.1 163 80.9" enable-background="new -252.3 356.1 163 80.9"><path stroke="#B2B2B2" stroke-width="2" stroke-miterlimit="10" d="M-108.9 404.1v30c0 1.1-.9 2-2 2h-120.1c-1.1 0-2-.9-2-2v-75c0-1.1.9-2 2-2h120.1c1.1 0 2 .9 2 2v37m-124.1-29h124.1" fill="none"></path><circle fill="#B2B2B2" cx="-227.8" cy="361.9" r="1.8"></circle><circle fill="#B2B2B2" cx="-222.2" cy="361.9" r="1.8"></circle><circle fill="#B2B2B2" cx="-216.6" cy="361.9" r="1.8"></circle><path stroke="#B2B2B2" stroke-width="2" stroke-miterlimit="10" d="M-128.7 400.1h36.7m-3.6-4.1l4 4.1-4 4.1" fill="none"></path></svg>
