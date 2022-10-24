@@ -1,4 +1,4 @@
-import {Container,Text ,Radio,Button,Loading,Grid,Image} from '@nextui-org/react'
+import {Container,Text ,Radio,Button,Loading,Grid} from '@nextui-org/react'
 import {useState,useEffect} from "react"
 import stripeCheckout from '../payment/stripe-checkout';
 import { displayRazorpay } from '../payment/razorpay-checkout';
@@ -20,6 +20,7 @@ export default function Home({country}) {
     script.async = true;
     script.onload = () => setScriptLoaded(true);
     document.body.appendChild(script);
+   
   };
 
   const loadStripe= ()=>{

@@ -14,6 +14,7 @@ specifiers:
   react-dom: 18.2.0
   stripe: ^10.14.0
   uuid: ^9.0.0
+  webpack-bundle-analyzer: ^4.6.1
 
 dependencies:
   '@next/bundle-analyzer': 12.3.1
@@ -27,6 +28,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   stripe: 10.14.0
   uuid: 9.0.0
+  webpack-bundle-analyzer: 4.6.1
 
 devDependencies:
   eslint: 8.25.0
@@ -3661,6 +3663,25 @@ packages:
       acorn-walk: 8.2.0
       chalk: 4.1.2
       commander: 6.2.1
+      gzip-size: 6.0.0
+      lodash: 4.17.21
+      opener: 1.5.2
+      sirv: 1.0.19
+      ws: 7.5.9
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
+  /webpack-bundle-analyzer/4.6.1:
+    resolution: {integrity: sha512-oKz9Oz9j3rUciLNfpGFjOb49/jEpXNmWdVH8Ls//zNcnLlQdTGXQQMsBbb/gR7Zl8WNLxVCq+0Hqbx3zv6twBw==}
+    engines: {node: '>= 10.13.0'}
+    hasBin: true
+    dependencies:
+      acorn: 8.8.0
+      acorn-walk: 8.2.0
+      chalk: 4.1.2
+      commander: 7.2.0
       gzip-size: 6.0.0
       lodash: 4.17.21
       opener: 1.5.2
