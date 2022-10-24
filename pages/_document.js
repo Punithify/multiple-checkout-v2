@@ -13,13 +13,16 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en">
-        <Head>{CssBaseline.flush()}</Head>
+      <html lang='en'>
+        <Head>{CssBaseline.flush()}
+        <title>Multiple Payment Checkout</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        </Head>
         <body>
           <Main />
           <NextScript />
         </body>
-      </Html>
+      </html>
     );
   }
 }
