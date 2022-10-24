@@ -12,6 +12,7 @@ export default function Home({country}) {
   country = decodeURIComponent(country);
     const loadRazorpayCheckout = () => {
     if (window.razorpay) {
+      console.log("hello1")
       setScriptLoaded(true);
       return;
     }
@@ -28,8 +29,11 @@ export default function Home({country}) {
   }
 
   const loadRazorpay=async()=>{
-    const res=await displayRazorpay()
-    setButtonDisabled(res) //for the razorpay cancel button
+    if(scriptLoaded){
+      const res=await displayRazorpay()
+      setButtonDisabled(res)
+    }
+     //for the razorpay cancel button
   }
 
 
