@@ -20,7 +20,7 @@ function pruneTree(subtree, tree) {
 
 madge(path.join(__dirname, '..'), {
   baseDir: path.join(__dirname, '..'),
-  fileExtensions: ['js', 'jsx'],
+  fileExtensions: ['ts', 'tsx'],
   // detectiveOptions: {
   //   ts: {
   //     skipTypeImports: true,
