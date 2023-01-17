@@ -5,7 +5,7 @@ An application that initiates payments based on the user's location and serverin
 
 ## Installation
 
-Install my-project with npm
+Install my-project with yarn
 
 ```bash
   yarn install
